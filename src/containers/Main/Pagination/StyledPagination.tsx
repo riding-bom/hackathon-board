@@ -4,6 +4,7 @@ import Pagination from "./Pagination";
 const StyledPagination = styled(Pagination)`
   box-sizing: border-box;
   width: 960px;
+  margin: 0 auto;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
