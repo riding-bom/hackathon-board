@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { CombinedState } from "redux";
 import { post, posts } from "../../constance/type";
+import StyledPagination from "../../containers/Main/Pagination/StyledPagination";
 
 type listProps = {
   className: string;
@@ -25,19 +26,22 @@ const List = ({ className, asyncAction }: listProps) => {
   }, [asyncAction, dispatch]);
 
   return (
-    <ul className={className}>
-      {posts.map((post) => {
-        return (
-          <Link to={`/${post.id}`} key={post.id}>
-            <li key={post.id}>
-              <div>{`[${post.category}]`}</div>
-              <h2>{post.title}</h2>
-              <div>{post.id}</div>
-            </li>
-          </Link>
-        );
-      })}
-    </ul>
+    <>
+      <ul className={className}>
+        {posts.map((post) => {
+          return (
+            <Link to={`/${post.id}`} key={post.id}>
+              <li key={post.id}>
+                <div>{`[${post.category}]`}</div>
+                <h2>{post.title}</h2>
+                <div>{post.id}</div>
+              </li>
+            </Link>
+          );
+        })}
+      </ul>
+      <StyledPagination className="" />
+    </>
   );
 };
 
