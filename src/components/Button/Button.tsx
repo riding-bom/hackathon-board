@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CombinedState } from 'redux';
 import { post } from '../../constance/type';
 import { addPost } from '../../firebase/API';
-import { dateAction } from '../../redux/reducers/newPost';
+import { dateAction, resetTitleAction } from '../../redux/reducers/newPost';
 // import { StyledModal } from '../Modal/StyledModal';
 
 type buttonProps = {
@@ -36,6 +36,7 @@ const Button = ({ className, children, type, onOpen }: buttonProps) => {
     } else {
       dispatch(dateAction(new Date()));
       addPost(newPost);
+      dispatch(resetTitleAction());
     }
   };
 
