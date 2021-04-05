@@ -1,9 +1,17 @@
+<<<<<<< HEAD
+import { useDispatch, useSelector } from 'react-redux';
+import { CombinedState } from 'redux';
+import { post } from '../../constance/type';
+import { addPost } from '../../firebase/API';
+import { dateAction, resetTitleAction } from '../../redux/reducers/newPost';
+=======
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { CombinedState } from "redux";
 import { post } from "../../constance/type";
 import { addPost } from "../../firebase/API";
 import { dateAction } from "../../redux/reducers/newPost";
+>>>>>>> 6ddab875124e8ac7a7ecb9483561455ed2e31ff3
 // import { StyledModal } from '../Modal/StyledModal';
 
 type buttonProps = {
