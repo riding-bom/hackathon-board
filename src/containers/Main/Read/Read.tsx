@@ -4,6 +4,7 @@ import { useLocation } from "react-router";
 import { CombinedState } from "redux";
 import { post } from "../../../constance/type";
 import { readPostAsync } from "../../../redux/reducers/readPost";
+import purify from 'dompurify';
 
 type readProps = {
   className: string;
@@ -29,7 +30,7 @@ const Read = ({ className }: readProps) => {
   return (
     <article className={className}>
       <h1>{readPost.title}</h1>
-      <p>{readPost.content}</p>
+      <p dangerouslySetInnerHTML={ {__html:purify.sanitize(readPost.content)} }></p>
     </article>
   );
 };
