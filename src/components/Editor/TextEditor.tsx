@@ -1,9 +1,5 @@
-import { useEffect } from 'react'
-
 /* Redux-------------------------------------------------------------------------- */
-import { useDispatch, useSelector } from "react-redux";
-import { CombinedState } from "redux";
-import { post } from "../../constance/type";
+import { useDispatch } from "react-redux";
 import { contentAction } from "../../redux/reducers/newPost";
 
 /* Draft.js-------------------------------------------------------------------------- */
@@ -17,15 +13,6 @@ import draftToHtml from "draftjs-to-html";
 function TextEditor () {
   // Redux dispatch
   const dispatch = useDispatch();
-  
-  const newPost = useSelector(
-    (
-      store: CombinedState<{
-        post: post;
-        newPost: post;
-      }>
-    ) => store.newPost
-  );
 
   /* Draft.js-------------------------------------------------------------------------- */
   const editorToHtml = (editorState: any) => draftToHtml(convertToRaw(editorState.getCurrentContent()));
