@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Write from "./Write";
+import styled from 'styled-components';
+import Write from './Write';
 
 const StyledWrite = styled(Write)`
   display: flex;

@@ -3,15 +3,17 @@ import { CombinedState } from 'redux';
 import { post } from '../../constance/type';
 import { addPost } from '../../firebase/API';
 import { dateAction } from '../../redux/reducers/newPost';
+// import { StyledModal } from '../Modal/StyledModal';
 
 type buttonProps = {
   className: string;
   children: React.ReactNode;
   type?: 'button' | 'submit' | 'reset' | undefined;
   width?: string;
+  onOpen?: () => void;
 };
 
-const Button = ({ className, children, type }: buttonProps) => {
+const Button = ({ className, children, type, onOpen }: buttonProps) => {
   const newPost = useSelector(
     (
       state: CombinedState<{
@@ -28,8 +30,8 @@ const Button = ({ className, children, type }: buttonProps) => {
   const dispatch = useDispatch();
 
   const onChangeIdAndDate = (e: any) => {
-    if (newPost.title || newPost.content === '') {
-      console.log('title을 입력바랍니다.');
+    if (newPost.title === '' || newPost.content === '') {
+      (onOpen as () => void)();
       return;
     } else {
       dispatch(dateAction(new Date()));
