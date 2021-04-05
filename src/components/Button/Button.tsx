@@ -1,15 +1,15 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
-import { CombinedState } from "redux";
-import { post } from "../../constance/type";
-import { addPost } from "../../firebase/API";
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
+import { CombinedState } from 'redux';
+import { post } from '../../constance/type';
+import { addPost } from '../../firebase/API';
 import { dateAction, resetTitleAction } from '../../redux/reducers/newPost';
 // import { StyledModal } from '../Modal/StyledModal';
 
 type buttonProps = {
   className: string;
   children: React.ReactNode;
-  type?: "button" | "submit" | "reset" | undefined;
+  type?: 'button' | 'submit' | 'reset' | undefined;
   width?: string;
   onOpen?: () => void;
 };
@@ -34,11 +34,12 @@ const Button = ({ className, children, type, onOpen }: buttonProps) => {
   const dispatch = useDispatch();
 
   const onChangeIdAndDate = async (e: any) => {
-    if (newPost.title === "" || newPost.content === "") {
+    if (newPost.title === '' || newPost.content === '') {
       (onOpen as () => void)();
       return;
     } else {
       dispatch(dateAction(new Date()));
+      dispatch(resetTitleAction());
       await addPost(newPost);
       dispatch(resetTitleAction());
       history.push(`/${newPost.id}`);
@@ -49,7 +50,7 @@ const Button = ({ className, children, type, onOpen }: buttonProps) => {
     <button
       className={className}
       type={type}
-      onClick={type === "submit" ? onChangeIdAndDate : () => {}}
+      onClick={type === 'submit' ? onChangeIdAndDate : () => {}}
     >
       {children}
     </button>
@@ -57,7 +58,7 @@ const Button = ({ className, children, type, onOpen }: buttonProps) => {
 };
 
 Button.defaultProps = {
-  type: "button",
+  type: 'button'
 };
 
 export default Button;
