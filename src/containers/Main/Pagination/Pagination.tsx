@@ -1,8 +1,5 @@
-import { useSelector } from "react-redux";
-import { Link, useLocation, useRouteMatch } from "react-router-dom";
-import { CombinedState } from "redux";
+import { Link, useRouteMatch } from "react-router-dom";
 import StyledButton from "../../../components/Button/StyledButton";
-import { posts } from "../../../constance/type";
 
 type paginationProps = {
   className: string;
@@ -16,10 +13,10 @@ const Pagination = ({ className }: paginationProps) => {
       <StyledButton className="" children="<" width="50" />
       <ul>
         <li>
-          <Link to={`${match.path}/1`}>1</Link>
+          <Link to={match.path === "/" ? "/" : `${match.path}/1`}>1</Link>
         </li>
         <li>
-          <Link to={`${match.path}/2`}>2</Link>
+          <Link to={match.path === "/" ? "/" : `${match.path}/2`}>2</Link>
         </li>
       </ul>
       <StyledButton className="" children=">" width="50" />
